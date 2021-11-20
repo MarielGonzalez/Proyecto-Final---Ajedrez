@@ -2,73 +2,30 @@
 #include <iostream>
 using namespace std;
 
-int fila, columna;
-char tablero[8][8]; 
 
-int main(int argc, char **argv) {
-		cout << "Juguemos"  << endl;
+int main(){
 
-	for (fila=0; fila<8; fila++) {
-		for (columna=0; columna<8; columna++) {
-			if (fila==0 || fila==6) {
-			tablero[fila][columna] = '*';
-
+	int fila, col; 
+	
+	printf("\n"); // Solo lo ponemos para dejar un poco de espacio.
+	
+		for(int fila=1; fila<8 ; fila++) // Este for es para hacer un salto de renglon. 
+	  	{
+	  		for(int col=1; col<8; col++) //Este for imprime los astediscos o espacios dependiendo de la condicion if de abajo. col de columna
+	  		{
+	  			/*Este if es para que imprima la primera linea completa y la ultima tambien de puros asteriscos del marco. 
+	  			  Y despues solo pondra un asterisco en la primera posicion y en la ultima. 
+	  			*/
+				if(fila == 1 || fila == 8 || col== 1 || col==8) 
+	  			{
+					printf("*");  
+				}else // Imprime los espacios que hay entre el primer asterisco y el ultimo. Del segundo renglon hasta el penultimo.
+	  			{
+	  				printf("*");
+				}
 			}
-			else {
-		 	tablero[fila][columna] = '*';
-			}
-	
-	}
+			printf("\n");
+	  }
 
-}
-
-
-	for (fila=0; fila<8; fila++) {
-
-		cout << "\n"  << endl;
-
-		for (columna=0; columna<8; columna++) {
-			
-		cout << tablero[fila][columna]  << endl;	
-
-			
-	
-	}
-
-	}
-
-cout << "\n \n "  << endl;
-
-
-
-
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	return 0;
-
 }
