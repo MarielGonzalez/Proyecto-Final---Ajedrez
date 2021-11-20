@@ -1,3 +1,12 @@
 {
-  "files": {}
+  "files": {
+    "src/main.cpp": [
+      {
+        "id": "1798d5ab-28af-4dfc-8910-e254d8424799",
+        "line": 53,
+        "version": 271,
+        "index": 386
+      }
+    ]
+  }
 }
