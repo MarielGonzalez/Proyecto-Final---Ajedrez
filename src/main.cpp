@@ -87,7 +87,7 @@ int main(){
 	cout << " Bienvenido!, Revisa la posición de la Reina en el tablero\n";
 	do{
 		cout << "Por favor ingrese el primer valor de la posicion \n"; 
-		cout << "Por favor tenga en cuenta que el tablero de ajedrez comienza en 0 y termina en 7 \n";
+		cout << "Para verificar la posicion en el tablero de ajedrez Ingrese valores desde 0 hasta el 7 \n";
 		cin>> x;
 		if(x>7 || x<0){
 			cout << "Entrada invalida! Intente nuevamente \n"; 
