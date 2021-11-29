@@ -5,20 +5,20 @@ int color (int n);
 using namespace std;
 int x, y; 
 char tablero[8][8];
-const char available = '-', occupied = '+';
-void setQueenRange(int x, int y){
+const char disponible = '-', ocupado = '+';
+void fijarRangoReina(int x, int y){
 
-	// Horizontal Range with horizontal value (x)
+	// Rango horizontal con valor horizontal (x)
 	for(int j=0; j<8;j++){
-		tablero[x][j] = occupied;
+		tablero[x][j] = ocupado;
 	}
 
-	// Vertical Range with vertical value (y)
+	// Rango vertical con valor horizontal (y)
 	for(int i=0; i<8;i++ ){
-		tablero[i][y] = occupied;
+		tablero[i][y] = ocupado;
 	}
 
-	// First Diagonal
+	// Primera diagonal
 	int x2 = x, y2 = y;
 	if(x<y){
 		y2 -= x;
@@ -34,11 +34,11 @@ void setQueenRange(int x, int y){
 	for(int i=0; i<8;i++){
 		int ye = y2;
 		if((x2+i < 8) && (ye+i < 8)){
-			tablero[x2+i][y2+i] = occupied;
+			tablero[x2+i][y2+i] = ocupado;
 		}
 	}
 
-	// Second Diagonal
+	// Segunda diagonal
 	int sum = x+y;
 	int x3, y3;
 	if(sum < 7){
@@ -54,17 +54,17 @@ void setQueenRange(int x, int y){
 		int posY = y3+i;
 		if((posX < 8 && posX >= 0) 
 		&& (posY < 8 && posY >= 0)){
-			tablero[posX][posY] = occupied;
+			tablero[posX][posY] = ocupado;
 		}
 	}
 }
 
-void positionQueen(int x, int y){
-	setQueenRange(x,y);
+void reinaPosicion(int x, int y){
+	fijarRangoReina(x,y);
 	tablero[x][y] = 'R';
 }
 
-void printBoard(){
+void pintarTablero(){
 	for(int i=0; i<8;i++){
 		for(int j=0;j<8;j++){
 			cout << tablero[i][j];
@@ -73,45 +73,48 @@ void printBoard(){
 	}
 }
 
-void fillBoard(){
+void llenarTablero(){
 	for(int i=0; i<8;i++){
 		for(int j=0;j<8;j++){
 			// Rellenar todo el tablero con el simbolo "Disponible"
-			tablero[i][j] = available;
+			tablero[i][j] = disponible;
 		}
 	}
 }
 
 int main(){
 	// TODO: Pedir entrada por teclado para coordenadas
-    cout << "Welcome to review YourQueen Chess Position \n";
-   	 do{
-		 
-		 cout << "Please enter a valid X position [X][] \n"; 
-		 cout << "Please be aware that this Chess Board starts from 0 and ends to 7 \n";
-     cin>> x;
-			if(x>7 || x<0){
-				cout << "Invalid Entry! \n"; 
-			}
-			
-		}while(x>7 || x<0);
+	cout << " Bienvenido!, Revisa la posición de la Reina en el tablero\n";
+	do{
+		cout << "Por favor ingrese una posición X valida [X][] \n"; 
+		cout << "Por favor tenga en cuenta que el tablero de ajedrez comienza en 0 y termina en 7 \n";
+		cin>> x;
+		if(x>7 || x<0){
+			cout << "Entrada invalida! \n"; 
+		}else {
+			cout << "Gracias! \n \n"; 
+		}
+	
+	}while(x>7 || x<0);
    
 		
-		do{
-	  cout << "Enter the Y position [][Y] \n";
+	do{
+		cout << "Ingrese la posicion Y [][Y] \n";
 		
-		cout << "Please be aware that this Chess Board starts from 0 and ends to 7 \n";
-    cin>> y;
-    if(y>7 || y<0){
-				cout << "Invalid Entry! \n"; 
-			}
-		}while(y>7 || y<0);
+		cout << "Por favor tenga en cuenta que el tablero de ajedrez comienza en 0 y termina en 7 \n";
+		cin>> y;
+		if(y>7 || y<0){
+			cout << "Valor Invalido! \n"; 
+		}else {
+			cout << "Gracias! \n \n"; 
+		}
+	}while(y>7 || y<0);
 		
-  cout << "Thanks! \n";
-	cout << "The posible Queen movements are.... \n";
-	fillBoard();
-	positionQueen(x,y);
-	printBoard();
+ 
+	cout << "Los posibles movimientos de la Reina son.... \n";
+	llenarTablero(); 
+	reinaPosicion(x,y); 
+	pintarTablero(); 
 	
 	return 0;
 }
