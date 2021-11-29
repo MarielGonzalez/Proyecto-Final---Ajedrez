@@ -86,11 +86,11 @@ int main(){
 	// Pedir al usuario la entrada por teclado para coordenadas
 	cout << " Bienvenido!, Revisa la posición de la Reina en el tablero\n";
 	do{
-		cout << "Por favor ingrese una posición X valida [X][] \n"; 
+		cout << "Por favor ingrese el primer valor de la posicion \n"; 
 		cout << "Por favor tenga en cuenta que el tablero de ajedrez comienza en 0 y termina en 7 \n";
 		cin>> x;
 		if(x>7 || x<0){
-			cout << "Entrada invalida! \n"; 
+			cout << "Entrada invalida! Intente nuevamente \n"; 
 		}else {
 			cout << "Gracias! \n \n"; 
 		}
@@ -99,12 +99,12 @@ int main(){
    
 		
 	do{
-		cout << "Ingrese la posicion Y [][Y] \n";
+		cout << "Ingrese el segundo valor de la posicion \n";
 		
-		cout << "Por favor tenga en cuenta que el tablero de ajedrez comienza en 0 y termina en 7 \n";
+		cout << "Para verificar la posicion en el tablero de ajedrez Ingrese valores desde 0 hasta el 7 \n";
 		cin>> y;
 		if(y>7 || y<0){
-			cout << "Valor Invalido! \n"; 
+			cout << "Valor Invalido! Intente nuevamente \n"; 
 		}else {
 			cout << "Gracias! \n \n"; 
 		}
