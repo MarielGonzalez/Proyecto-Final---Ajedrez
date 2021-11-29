@@ -1,28 +1,24 @@
 #include <cstdio>
 #include <iostream>
 #include <algorithm>
+int color (int n);
 using namespace std;
+int x, y; 
+char tablero[8][8];
+const char available = '-', occupied = '+';
+void setQueenRange(int x, int y){
 
-
-void setQueenRange(char tablero[][8], int x, int y){
-
-	const char occupied = '+';
 	// Horizontal Range with horizontal value (x)
-	cout << "Horizontal: \n";
-	for(int j=0; j<8;j++ ){
-		cout << "(" << x << "," << j <<")\n";
+	for(int j=0; j<8;j++){
 		tablero[x][j] = occupied;
 	}
 
 	// Vertical Range with vertical value (y)
-	cout << "Vertical: \n";
 	for(int i=0; i<8;i++ ){
-		cout << "(" << i << "," << y <<") \n";
 		tablero[i][y] = occupied;
 	}
 
 	// First Diagonal
-	cout << "Diagonal 1: \n";
 	int x2 = x, y2 = y;
 	if(x<y){
 		y2 -= x;
@@ -38,12 +34,7 @@ void setQueenRange(char tablero[][8], int x, int y){
 	for(int i=0; i<8;i++){
 		int ye = y2;
 		if((x2+i < 8) && (ye+i < 8)){
-			cout << "(" << x2+i << "," << y2+i <<") \n";
 			tablero[x2+i][y2+i] = occupied;
-		}else{
-			cout << "rejected: ";
-			cout << "(" << x2+i << "," << y2+i <<") \n";
-
 		}
 	}
 
@@ -51,36 +42,29 @@ void setQueenRange(char tablero[][8], int x, int y){
 	int sum = x+y;
 	int x3, y3;
 	if(sum < 7){
-		cout << "Sum < 7 is:" << sum << "\n";
 		x3 = sum;
 		y3 = 0;
 	}else{
-		cout << "Sum >= 7 is:" << sum << "\n";
 		x3 = 7;
 		y3 = sum -7;
 	}
 
-	cout << "Diagonal 2: \n";
-
 	for(int i=0;i<8;i++){
 		int posX = x3-i;
 		int posY = y3+i;
-		if((posX < 8 && posX >= 0) && (posY < 8 && posY >= 0)){
-			cout << "(" << posX << "," << posY <<") \n";
+		if((posX < 8 && posX >= 0) 
+		&& (posY < 8 && posY >= 0)){
 			tablero[posX][posY] = occupied;
-		}else{
-			cout << "rejected: ";
-			cout << "(" << posX << "," << posY <<") \n";
 		}
 	}
 }
 
-void positionQueen(char tablero[][8], int x, int y){
-	setQueenRange(tablero,x,y);
+void positionQueen(int x, int y){
+	setQueenRange(x,y);
 	tablero[x][y] = 'R';
 }
 
-void printBoard(char tablero[][8]){
+void printBoard(){
 	for(int i=0; i<8;i++){
 		for(int j=0;j<8;j++){
 			cout << tablero[i][j];
@@ -89,24 +73,45 @@ void printBoard(char tablero[][8]){
 	}
 }
 
-int main(){
-
-	const char free = '-';
-
-	int fila, col; 
-	char tablero[8][8];
-
+void fillBoard(){
 	for(int i=0; i<8;i++){
 		for(int j=0;j<8;j++){
 			// Rellenar todo el tablero con el simbolo "Disponible"
-			tablero[i][j] = free;
+			tablero[i][j] = available;
 		}
 	}
+}
 
+int main(){
 	// TODO: Pedir entrada por teclado para coordenadas
-
-	positionQueen(tablero, 5,8);
-	printBoard(tablero);
+    cout << "Welcome to review YourQueen Chess Position \n";
+   	 do{
+		 
+		 cout << "Please enter a valid X position [X][] \n"; 
+		 cout << "Please be aware that this Chess Board starts from 0 and ends to 7 \n";
+     cin>> x;
+			if(x>7 || x<0){
+				cout << "Invalid Entry! \n"; 
+			}
+			
+		}while(x>7 || x<0);
+   
+		
+		do{
+	  cout << "Enter the Y position [][Y] \n";
+		
+		cout << "Please be aware that this Chess Board starts from 0 and ends to 7 \n";
+    cin>> y;
+    if(y>7 || y<0){
+				cout << "Invalid Entry! \n"; 
+			}
+		}while(y>7 || y<0);
+		
+  cout << "Thanks! \n";
+	cout << "The posible Queen movements are.... \n";
+	fillBoard();
+	positionQueen(x,y);
+	printBoard();
 	
 	return 0;
 }
