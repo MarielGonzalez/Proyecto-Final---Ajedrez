@@ -105,7 +105,7 @@ int main(){
 
 	// TODO: Pedir entrada por teclado para coordenadas
 
-	positionQueen(tablero, 7,0);
+	positionQueen(tablero, 5,8);
 	printBoard(tablero);
 	
 	return 0;
