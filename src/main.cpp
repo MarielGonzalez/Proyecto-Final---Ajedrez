@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <iostream>
 #include <algorithm>
-int color (int n);
 using namespace std;
+
 int x, y; 
 char tablero[8][8];
 const char disponible = '-', ocupado = '+';
@@ -83,7 +83,7 @@ void llenarTablero(){
 }
 
 int main(){
-	// TODO: Pedir entrada por teclado para coordenadas
+	// Pedir al usuario la entrada por teclado para coordenadas
 	cout << " Bienvenido!, Revisa la posición de la Reina en el tablero\n";
 	do{
 		cout << "Por favor ingrese una posición X valida [X][] \n"; 
